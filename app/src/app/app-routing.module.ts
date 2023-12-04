@@ -8,12 +8,12 @@ const routes: Routes = [
     component: AppComponent
   },
   {
-    path: 'chap8',
-    loadChildren: () => import('./chap8/chap8.module').then(m => m.Chap8Module),
-  },
-  {
     path: 'auth',
     loadChildren: () => import('./auth/routing.module').then(m => m.RoutingModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/routing.module').then(m => m.RoutingModule)
   }
 ];
 

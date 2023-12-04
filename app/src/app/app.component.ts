@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CsrfService } from './service/csrf.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<router-outlet></router-outlet>',
   styleUrls: []
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit{
 
-  persons = [
-    { name: 'Kristen Ramos', email: 'kristen.ramos@example.com' },
-    { name: 'Floyd Miles', email: 'floyd.miles@example.com' },
-    { name: 'Courtney Henry', email: 'courtney.henry@example.com' },
-    { name: 'Ted Fox', email: 'ted.fox@example.com' }
-  ];
+  constructor(private csrfSvc: CsrfService) {
+  }
+
+  ngOnInit(): void {
+    this.csrfSvc.fetchCsrf();
+  }
 }

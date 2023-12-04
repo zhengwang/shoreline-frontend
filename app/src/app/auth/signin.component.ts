@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../service/login.service';
 
 @Component({
   selector: 'Signin',
@@ -11,7 +12,7 @@ import { Component } from '@angular/core';
       <form>
         <div class="flex flex-col gap-4 p-6">
           <div class="relative h-11 w-full min-w-[200px]">
-            <Floatextfield label="Email"></Floatextfield>
+            <Floatextfield label="email"></Floatextfield>
           </div>
           <div class="relative h-11 w-full min-w-[200px]">
             <Floatextfield label="password"></Floatextfield>
@@ -21,15 +22,22 @@ import { Component } from '@angular/core';
           </div>
         </div>
         <div class="p-6 pt-0">
-          <AppButton>{{'signin'|i18next}}</AppButton>
+          <AppButton (click)="onSubmit()">{{'signin'|i18next}}</AppButton>
         </div>
       </form>
     </div>
   </div>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class SigninComponent {
 
+  constructor(private loginSvc: LoginService) { }
+
+  onSubmit() {
+    this.loginSvc.login({
+      'email': 'ca@bokokda.pk',
+      'password': '12345678'
+    });
+  }
 }
