@@ -21,7 +21,7 @@ export function appInit(i18next: ITranslationService) {
         translation: {
           'account': 'account',
           'customize': 'customize',
-          'email': 'email',
+          'email': 'email address',
           'film': 'film',
           'payment': 'payment',
           'password': 'password',

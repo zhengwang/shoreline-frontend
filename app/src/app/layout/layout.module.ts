@@ -12,6 +12,11 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar.component';
 import { SidebarfooterComponent } from './sidebarfooter.component';
 import { NavbuttonComponent } from './navbutton.component';
+import { LoadingComponent } from './loading.component';
+import { NavbarComponent } from './navbar.component';
+import { AuthComponent } from './auth.component';
+import { LogoComponent } from './logo.component';
+import { InputfieldComponent } from './field/inputfield.component';
 
 
 @NgModule({
@@ -26,6 +31,11 @@ import { NavbuttonComponent } from './navbutton.component';
     SidebarComponent,
     SidebarfooterComponent,
     NavbuttonComponent,
+    LoadingComponent,
+    NavbarComponent,
+    AuthComponent,
+    LogoComponent,
+    InputfieldComponent,
   ],
   imports: [
     CommonModule,
@@ -33,10 +43,14 @@ import { NavbuttonComponent } from './navbutton.component';
     I18NextModule
   ],
   exports: [
+    AuthComponent,
+    LogoComponent,
     ButtonComponent,
+    NavbarComponent,
     NewfilmComponent,
     SidebarComponent,
     CheckboxComponent,
+    InputfieldComponent,
     FloatextfieldComponent,
   ]
 })

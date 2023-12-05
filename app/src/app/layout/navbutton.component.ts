@@ -7,19 +7,9 @@ import { Component, Input } from '@angular/core';
     (click)="handleClickMenu($event)"
     class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary" [ngClass]="{'bg-primary-100': active}" role="button" aria-haspopup="true" :aria-expanded="true">
       <span>
-        <svg class="w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-        </svg>
+        <ng-content></ng-content>
       </span>
-      <span class="ml-2 text-sm capitalize">{{'dashboard'|i18next}}</span>
+      <span class="ml-2 text-sm capitalize">{{title|i18next}}</span>
       <span class="ml-auto" aria-hidden="true">
         <svg
           class="w-4 h-4 transition-transform transform"
@@ -46,7 +36,7 @@ import { Component, Input } from '@angular/core';
   ]
 })
 export class NavbuttonComponent {
-
+  @Input() title: string;
   @Input() active: boolean = false;
   @Input() subItems: Array<any>;
 
