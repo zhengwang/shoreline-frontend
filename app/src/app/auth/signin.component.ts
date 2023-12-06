@@ -22,17 +22,11 @@ import { LoginService } from '../service/login.service';
           <a href="forgot-password.html" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
         </div>
         <div>
-          <button type="submit" class="w-full px-4 py-2 font-medium text-center text-white transition-colors duration-200 rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 dark:focus:ring-offset-darker">
-            Login
-          </button>
+          <AppButton (clickEvent)="onSubmit($event)">{{'login'|i18next}}</AppButton>
         </div>
       </form>
 
-      <div class="flex items-center justify-center space-x-2 flex-nowrap">
-        <span class="w-20 h-px bg-gray-300"></span>
-        <span>OR</span>
-        <span class="w-20 h-px bg-gray-300"></span>
-      </div>
+      <Or></Or>
 
       <a href="#"
         class="flex items-center justify-center px-4 py-2 space-x-2 text-white transition-all duration-200 bg-black rounded-md hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1 dark:focus:ring-offset-darker">
@@ -97,14 +91,17 @@ import { LoginService } from '../service/login.service';
 })
 export class SigninComponent {
   isDark: boolean;
-  constructor(private loginSvc: LoginService) { 
+  constructor(private loginSvc: LoginService) {
     this.isDark = false;
   }
 
-  onSubmit() {
-    this.loginSvc.login({
-      'email': 'ca@bokokda.pk',
-      'password': '12345678'
-    });
+  onSubmit($event: any) {
+    if ($event) {
+      this.loginSvc.login({
+        'email': 'ca@bokokda.pk',
+        'password': '12345678'
+      });
+      console.log('click login');
+    }
   }
 }

@@ -17,6 +17,10 @@ import { NavbarComponent } from './navbar.component';
 import { AuthComponent } from './auth.component';
 import { LogoComponent } from './logo.component';
 import { InputfieldComponent } from './field/inputfield.component';
+import { OrComponent } from './or.component';
+import { AvatarComponent } from './avatar.component';
+import { NotificateComponent } from './notificate.component';
+import { AvatardropdownComponent } from './avatardropdown.component';
 
 
 @NgModule({
@@ -36,6 +40,10 @@ import { InputfieldComponent } from './field/inputfield.component';
     AuthComponent,
     LogoComponent,
     InputfieldComponent,
+    OrComponent,
+    AvatarComponent,
+    NotificateComponent,
+    AvatardropdownComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +56,7 @@ import { InputfieldComponent } from './field/inputfield.component';
     ButtonComponent,
     NavbarComponent,
     NewfilmComponent,
+    OrComponent,
     SidebarComponent,
     CheckboxComponent,
     InputfieldComponent,

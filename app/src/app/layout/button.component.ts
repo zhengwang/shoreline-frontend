@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'AppButton',
   template: `
-    <button class="block w-full select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-    type="button">
+    <button class="w-full px-4 py-2 font-medium text-center text-white transition-colors duration-200 rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 dark:focus:ring-offset-darker capitalize" type="button" (click)="handleClick($event)">
       <ng-content></ng-content>
     </button>
   `,
@@ -12,5 +11,10 @@ import { Component } from '@angular/core';
   ]
 })
 export class ButtonComponent {
+  @Output() clickEvent = new EventEmitter();
 
+  handleClick($event: any) {
+    $event.preventDefault();
+    this.clickEvent.emit(true);
+  }
 }

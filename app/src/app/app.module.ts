@@ -2,12 +2,12 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { LayoutModule } from './layout/layout.module';
 import { AppRoutingModule } from './app-routing.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { APP_INITIALIZER, LOCALE_ID, NgModule } from '@angular/core';
-import { I18NEXT_SERVICE, I18NextModule, ITranslationService, defaultInterpolationFormat } from 'angular-i18next';
-import { AuthinterceptorService } from './service/authinterceptor.service';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { APP_INITIALIZER, LOCALE_ID, NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthinterceptorService } from './service/authinterceptor.service';
+import { I18NEXT_SERVICE, I18NextModule, ITranslationService, defaultInterpolationFormat } from 'angular-i18next';
 
 
 export function appInit(i18next: ITranslationService) {
@@ -23,6 +23,7 @@ export function appInit(i18next: ITranslationService) {
           'customize': 'customize',
           'email': 'email address',
           'film': 'film',
+          'login': 'signin',
           'payment': 'payment',
           'password': 'password',
           'remember_me': 'remember me',
