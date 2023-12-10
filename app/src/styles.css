@@ -65,24 +65,42 @@
 @tailwind utilities;
 
 @layer components {
-  .toggle:checked + span {
+  .toggle:checked+span {
     @apply top-0 left-6 bg-primary;
   }
-  .toggle:disabled + span {
+
+  .toggle:disabled+span {
     @apply bg-gray-500 shadow-none;
   }
+
   .toggle:checked:disabled {
     @apply bg-gray-200;
   }
-  .toggle:checked:disabled + span {
+
+  .toggle:checked:disabled+span {
     @apply shadow-none bg-primary-lighter;
   }
-  .toggle:focus + span {
+
+  .toggle:focus+span {
     @apply ring ring-primary-lighter;
   }
 
   input:invalid.invalid,
   textarea:invalid.invalid {
     @apply ring ring-danger-light dark:ring-danger;
+  }
+}
+
+@layer utilities {
+  .error-help::before {
+    content: '\f06a';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    padding: 4px;
+    color: red;
+  }
+
+  .error-help::first-letter {
+    text-transform: uppercase;
   }
 }

@@ -1,6 +1,6 @@
-import { Observable, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +17,11 @@ export class AuthinterceptorService implements HttpInterceptor {
       }
     });
 
-    return next.handle(authReq).pipe(
-      tap({
-        next: (event) => {},
-        error: (_error) => console.log(_error)
-      })
-    );
+    return next.handle(authReq);
+    // .pipe(
+    //   catchError((error: HttpErrorResponse) => {
+    //     return throwError(error.message);
+    //   })
+    // );
   }
 }

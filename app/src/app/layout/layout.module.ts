@@ -16,11 +16,16 @@ import { LoadingComponent } from './loading.component';
 import { NavbarComponent } from './navbar.component';
 import { AuthComponent } from './auth.component';
 import { LogoComponent } from './logo.component';
-import { InputfieldComponent } from './field/inputfield.component';
 import { OrComponent } from './or.component';
+import { FormsModule } from '@angular/forms';
 import { AvatarComponent } from './avatar.component';
 import { NotificateComponent } from './notificate.component';
-import { AvatardropdownComponent } from './avatardropdown.component';
+import { InputfieldComponent } from './field/inputfield.component';
+import { AuthRegisterComponent } from './authregister.component';
+import { ValiderrorComponent } from './form/validerror.component';
+import { PasswordinputComponent } from './passwordinput.component';
+import { GitloginbuttonComponent } from './gitloginbutton.component';
+import { DarktogglebuttonComponent } from './darktogglebutton.component';
 
 
 @NgModule({
@@ -43,12 +48,17 @@ import { AvatardropdownComponent } from './avatardropdown.component';
     OrComponent,
     AvatarComponent,
     NotificateComponent,
-    AvatardropdownComponent,
+    DarktogglebuttonComponent,
+    GitloginbuttonComponent,
+    ValiderrorComponent,
+    AuthRegisterComponent,
+    PasswordinputComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    I18NextModule
+    I18NextModule,
+    FormsModule
   ],
   exports: [
     AuthComponent,
@@ -61,6 +71,11 @@ import { AvatardropdownComponent } from './avatardropdown.component';
     CheckboxComponent,
     InputfieldComponent,
     FloatextfieldComponent,
+    DarktogglebuttonComponent,
+    GitloginbuttonComponent,
+    ValiderrorComponent,
+    AuthRegisterComponent,
+    PasswordinputComponent
   ]
 })
 export class LayoutModule { }

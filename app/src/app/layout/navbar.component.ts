@@ -12,7 +12,6 @@ import { Component } from '@angular/core';
         <nav class="hidden space-x-2 md:flex md:items-center">
           <Notificate></Notificate>
           <div><Avatar></Avatar></div>
-          <div><Avatardropdown></Avatardropdown></div>
         </nav>
       </div>
     </header>

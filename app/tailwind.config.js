@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',
@@ -19,6 +19,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['cairo', ...defaultTheme.fontFamily.sans],
+        iconFont: ['Font Awesome 5 Free']
       },
       colors: {
         light: 'var(--light)',
@@ -79,6 +80,12 @@ module.exports = {
           darker: colors.cyan[800],
         },
       },
+      content: {
+        'exclaim': 'url("/assets/icons/exclaim.svg")'
+      }
+    },
+    iconFont: {
+      'exclaim': '\f06a'
     },
   },
   variants: {
@@ -90,4 +97,3 @@ module.exports = {
   },
   plugins: [],
 }
-
