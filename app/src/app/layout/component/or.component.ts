@@ -9,8 +9,7 @@ import { Component } from '@angular/core';
       <span class="w-20 h-px bg-gray-300"></span>
     </div>
   `,
-  styles: [
-  ]
+  styles: [':host {display: contents;}']
 })
 export class OrComponent {
 

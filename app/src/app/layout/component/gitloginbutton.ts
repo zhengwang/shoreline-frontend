@@ -24,6 +24,6 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class GitloginbuttonComponent {
+export class Gitloginbutton {
 
 }

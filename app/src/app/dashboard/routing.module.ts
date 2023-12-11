@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { IndexComponent } from './index/index.component';
+import { DashboardGuard } from 'src/app/guard/dashboard.guard';
+import { IndexComponent } from 'src/app/dashboard/index/index.component';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent }
+  { path: '', component: IndexComponent, canActivate: [DashboardGuard] }
 ];
 
 @NgModule({

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { WebService } from 'src/app/service/web.service';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
   selector: 'Avatar',
@@ -15,9 +17,11 @@ import { Component } from '@angular/core';
         class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
         Your Profile
       </a>
-      <a href="#"
+      <a
+        href="#"
         role="menuitem"
-        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
+        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+        (click)="handleLogout($event)">
         Logout
       </a>
     </div>
@@ -25,10 +29,20 @@ import { Component } from '@angular/core';
   styles: [],
   animations: []
 })
-export class AvatarComponent {
+export class Avatar {
   open: boolean = false;
+
+  constructor(
+    private authService: WebService,
+    private apiService: ApiService) {
+  }
 
   handleClick() {
     this.open = !this.open;
+  }
+
+  handleLogout($event) {
+    $event.preventDefault();
+    this.authService.logout();
   }
 }

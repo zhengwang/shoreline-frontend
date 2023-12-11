@@ -35,7 +35,7 @@ import { Component, Input } from '@angular/core';
   styles: [
   ]
 })
-export class NavbuttonComponent {
+export class Navbutton {
   @Input() title: string;
   @Input() active: boolean = false;
   @Input() subItems: Array<any>;

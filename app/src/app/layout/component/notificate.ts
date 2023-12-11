@@ -24,6 +24,6 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class NotificateComponent {
+export class Notificate {
 
 }

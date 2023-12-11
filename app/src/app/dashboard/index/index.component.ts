@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FetchdataService } from 'src/app/service/fetchdata.service';
+import { Component } from '@angular/core';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
   selector: 'index',
@@ -7,13 +7,6 @@ import { FetchdataService } from 'src/app/service/fetchdata.service';
   styles: [
   ]
 })
-export class IndexComponent implements OnInit {
-
-  constructor(private fetchSvc: FetchdataService) {
-  }
-
-  ngOnInit(): void {
-    this.fetchSvc.fetchData('/api/user', {});
-  }
-
+export class IndexComponent {
+  constructor(private apiSvc: ApiService) { }
 }

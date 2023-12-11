@@ -39,6 +39,6 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class DarktogglebuttonComponent {
+export class Darktogglebutton {
   isDark: boolean = false;
 }

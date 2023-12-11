@@ -12,6 +12,6 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class LogoComponent {
+export class Logo {
 
 }

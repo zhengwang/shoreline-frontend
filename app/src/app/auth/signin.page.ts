@@ -1,39 +1,44 @@
 import * as Yup from 'yup';
+import * as i18next from 'i18next';
+import { Router } from '@angular/router';
 import { Component, ViewChild } from '@angular/core';
-import { LoginService } from '../service/login.service';
+import { WebService } from 'src/app/service/web.service';
 import { Observable, catchError, from, map, of } from 'rxjs';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors } from '@angular/forms';
-import * as i18next from 'i18next';
 
 @Component({
   selector: 'Signin',
   template: `
     <AuthLayout>
       <h1 class="text-xl font-semibold text-center">Login</h1>
-      <form [formGroup]="signinForm" #formElem="ngForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <form class="space-y-6" [formGroup]="signinForm" #formElem (ngSubmit)="onSubmit()">
         <div>
-          <InputField formControlName="email" placeholder="email" [error]="signinForm.get('email')?.getError('email')" [touched]="signinForm.controls['email'].touched"/>
+          <FieldInput formControlName="email" placeholder="email" [error]="signinForm.errors?.['email']" [touched]="signinForm.controls['email'].touched"/>
         </div>
         <div>
           <PasswordInput formControlName="password" placeholder="password" [error]="signinForm.errors?.['password']" [touched]="signinForm.controls['email'].touched"/>
         </div>
         <div class="flex items-center justify-between">
-          <Checkbox label="remember_me"/>
+          <FieldCheckbox>
+            {{'remember_me'|i18next}}
+          </FieldCheckbox>
           <a href="forgot-password.html" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
         </div>
         <div>
-          <AppButton (clickEvent)="onClickSignin($event)">{{'login'|i18next}}</AppButton>
+          <AppButton [disabled]="signinForm.invalid" type="submit">
+            {{'login'|i18next}}
+          </AppButton>
         </div>
       </form>
       <div><Or /></div>
       <div><GitLoginButton /></div>
-      <div><AuthRegister /></div>
+      <div><RegisterLink /></div>
       <DarkToggleButton />
     </AuthLayout>
   `,
-  styles: []
+  styles: [':host { display: contents; }']
 })
-export class SigninComponent {
+export class Signin {
   @ViewChild('formElem') formElem;
   signinForm: FormGroup;
   t = i18next.t;
@@ -43,28 +48,29 @@ export class SigninComponent {
     password: Yup.string().required(this.t('required', { attribute: 'password' }) as string)
   });
 
-  constructor(private loginSvc: LoginService) {
-    this.signinForm = new FormGroup({
-      email: new FormControl('', {updateOn: 'change'}),
-      password: new FormControl('')
-    }, [], this.validateYupSchema(this.fcSchema));
+  constructor(
+    private authSvc: WebService,
+    private _router: Router) {
+    this.signinForm = new FormGroup(
+      {
+        email: new FormControl('', { updateOn: 'change' }),
+        password: new FormControl('', { updateOn: 'change' })
+      },
+      [],
+      this.validateYupSchema(this.fcSchema));
   }
 
   onClickSignin($event: any) {
     if ($event) {
-      this.signinForm.markAllAsTouched();
-      this.formElem.ngSubmit.emit();
+      this.formElem.native
     }
   }
 
   onSubmit() {
-    if (this.signinForm.valid) {
-      this.loginSvc.login(this.signinForm.value, error => {
-        console.log(error);
-        const _temp = this.signinForm.controls['email'].errors || {};
-        this.signinForm.get('email')?.setErrors({ 'email': error, ..._temp });
-      });
-    }
+    console.log('submit form');
+    this.authSvc.login(this.signinForm.value, message => {
+      this.signinForm.setErrors({ 'email': message });
+    });
   }
 
   validateYupSchema<T>(yupSchema: Yup.Schema<T>): AsyncValidatorFn {

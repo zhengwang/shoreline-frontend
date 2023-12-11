@@ -2,14 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { I18NextModule } from 'angular-i18next';
 import { RoutingModule } from './routing.module';
-import { SigninComponent } from './signin.component';
-import { LayoutModule } from '../layout/layout.module';
+import { Signin } from 'src/app/auth/signin.page';
+import { Register } from './register.page';
+import { LayoutModule } from 'src/app/layout/layout.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    SigninComponent
+    Signin,
+    Register
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     I18NextModule,
   ],
   exports: [
-    SigninComponent
+    Signin
   ]
 })
 export class AuthModule { }
