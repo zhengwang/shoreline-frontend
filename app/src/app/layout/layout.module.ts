@@ -6,11 +6,11 @@ import { FieldCheckbox } from 'src/app/layout/field/FieldCheckbox';
 import { TextfieldComponent } from 'src/app/layout/field/textfield.component';
 import { FloatextfieldComponent } from './field/floatextfield.component';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './container/sidebar.component';
-import { SidebarfooterComponent } from './component/sidebarfooter.component';
+import { Sidebar } from './container/sidebar';
+import { SidebarFooter } from './component/sidebarfooter';
 import { Navbutton } from './component/navbutton';
 import { Loading } from './component/loading';
-import { NavbarComponent } from './container/navbar.component';
+import { Navbar } from './container/navbar';
 import { AuthLayout } from './container/authlayout';
 import { Logo } from './component/logo';
 import { OrComponent } from './component/or.component';
@@ -18,12 +18,15 @@ import { FormsModule } from '@angular/forms';
 import { Avatar } from './component/avatar';
 import { Notificate } from './component/notificate';
 import { FieldInput } from './field/FieldInput';
-import { RegisterLinkComponent } from './component/registerlink.component';
 import { ValiderrorComponent } from './form/validerror.component';
 import { PasswordinputComponent } from './field/passwordinput.component';
-import { Gitloginbutton } from './component/gitloginbutton';
+import { Gitbutton } from './component/git.button';
 import { Darktogglebutton } from './component/darktogglebutton';
 import { Autheader } from './component/autheader';
+import { AuthLink } from './component/auth.link';
+import { ArrowupIcon } from './icon/arrowup';
+import { Home } from './icon/home';
+import { Switch } from './icon/switch';
 
 
 @NgModule({
@@ -36,19 +39,22 @@ import { Autheader } from './component/autheader';
     Logo,
     AuthLayout,
     FieldCheckbox,
-    NavbarComponent,
+    Navbar,
     Loading,
-    SidebarComponent,
+    Sidebar,
     Navbutton,
     TextfieldComponent,
     Notificate,
     ValiderrorComponent,
-    RegisterLinkComponent,
     FloatextfieldComponent,
-    SidebarfooterComponent,
+    SidebarFooter,
     PasswordinputComponent,
-    Gitloginbutton,
+    Gitbutton,
     Darktogglebutton,
+    AuthLink,
+    ArrowupIcon,
+    Home,
+    Switch,
   ],
   imports: [
     CommonModule,
@@ -58,19 +64,19 @@ import { Autheader } from './component/autheader';
   ],
   exports: [
     AuthLayout,
+    AuthLink,
     Autheader,
     Logo,
     Button,
-    NavbarComponent,
+    Navbar,
     OrComponent,
-    SidebarComponent,
+    Sidebar,
     FieldCheckbox,
     FieldInput,
     FloatextfieldComponent,
     Darktogglebutton,
-    Gitloginbutton,
+    Gitbutton,
     ValiderrorComponent,
-    RegisterLinkComponent,
     PasswordinputComponent
   ]
 })

@@ -3,10 +3,10 @@ import { ApiService } from 'src/app/service/api.service';
 
 @Component({
   selector: 'index',
-  templateUrl: './index.component.html',
+  templateUrl: './index.html',
   styles: [
   ]
 })
-export class IndexComponent {
+export class Index {
   constructor(private apiSvc: ApiService) { }
 }

@@ -31,8 +31,12 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationEr
         </div>
       </form>
       <div><Or /></div>
-      <div><GitLoginButton /></div>
-      <div><RegisterLink /></div>
+      <div><GitButton>{{'button.git_login'|i18next}}</GitButton></div>
+      <div>
+        <AuthLink label="button.reg" url="/auth/register">
+          {{'auth.login'|i18next}}
+        </AuthLink>
+      </div>
       <DarkToggleButton />
     </AuthLayout>
   `,

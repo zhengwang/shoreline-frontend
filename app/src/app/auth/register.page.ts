@@ -1,11 +1,11 @@
 import * as Yup from 'yup';
 import * as i18next from 'i18next';
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { WebService } from 'src/app/service/web.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, concat, map, of } from 'rxjs';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'Register',
@@ -41,6 +41,13 @@ import { Router } from '@angular/router';
           </AppButton>
         </div>
       </form>
+      <div><Or /></div>
+      <div><GitButton>{{'button.git_reg'|i18next}}</GitButton></div>
+      <div>
+        <AuthLink label="button.signin" url="/auth/signin">
+          {{'auth.reg'|i18next}}
+        </AuthLink>
+      </div>
     </AuthLayout>
   `,
   styles: [':host { display: contents; }']

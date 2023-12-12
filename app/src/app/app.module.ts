@@ -20,7 +20,18 @@ export function appInit(i18next: ITranslationService) {
       en: {
         translation: {
           'account': 'account',
+          'auth': {
+            'login': 'don\'t have an account yet?',
+            'reg': 'already have an account?'
+          },
+          'button': {
+            'reg': 'register',
+            'signin': 'signin',
+            'git_login': 'login with github',
+            'git_reg': 'register using github'
+          },
           'customize': 'customize',
+          'dash': 'dashboard',
           'email': 'email address',
           'film': 'film',
           'first_name': 'first name',
@@ -28,6 +39,7 @@ export function appInit(i18next: ITranslationService) {
           'login': 'signin',
           'payment': 'payment',
           'password': 'Password',
+          'reg_acnt': 'don\'t have an account yet?',
           'register': 'register',
           'required': '{{attribute}} is mandatory field.',
           'remember_me': 'remember me',

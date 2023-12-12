@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'AppNavbar',
@@ -21,7 +20,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   `,
   styles: []
 })
-export class NavbarComponent implements OnInit {
+export class Navbar implements OnInit {
 
   constructor(
     private apiService: ApiService,
