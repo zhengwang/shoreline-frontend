@@ -25,9 +25,9 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationEr
           <a href="forgot-password.html" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
         </div>
         <div>
-          <AppButton [disabled]="signinForm.invalid" type="submit">
+          <AuthButton [disabled]="signinForm.invalid" type="submit">
             {{'login'|i18next}}
-          </AppButton>
+          </AuthButton>
         </div>
       </form>
       <div><Or /></div>

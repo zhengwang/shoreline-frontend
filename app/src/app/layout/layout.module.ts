@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { I18NextModule } from 'angular-i18next';
-import { Button } from 'src/app/layout/component/button';
+import { AuthButton } from 'src/app/layout/component/auth.button';
 import { FieldCheckbox } from 'src/app/layout/field/FieldCheckbox';
 import { TextfieldComponent } from 'src/app/layout/field/textfield.component';
 import { FloatextfieldComponent } from './field/floatextfield.component';
@@ -21,19 +21,23 @@ import { FieldInput } from './field/FieldInput';
 import { ValiderrorComponent } from './form/validerror.component';
 import { PasswordinputComponent } from './field/passwordinput.component';
 import { Gitbutton } from './component/git.button';
-import { Darktogglebutton } from './component/darktogglebutton';
+import { Darktogglebutton } from './component/darktoggle.button';
 import { Autheader } from './component/autheader';
 import { AuthLink } from './component/auth.link';
 import { ArrowupIcon } from './icon/arrowup';
 import { Home } from './icon/home';
 import { Switch } from './icon/switch';
+import { AppHeader } from './component/app.header';
+import { Linkbutton } from './component/link.button';
+import { Card } from '../layout/container/card';
 
 
 @NgModule({
   declarations: [
     Avatar,
-    Button,
+    AuthButton,
     Autheader,
+    Card,
     FieldInput,
     OrComponent,
     Logo,
@@ -55,6 +59,8 @@ import { Switch } from './icon/switch';
     ArrowupIcon,
     Home,
     Switch,
+    AppHeader,
+    Linkbutton,
   ],
   imports: [
     CommonModule,
@@ -66,8 +72,9 @@ import { Switch } from './icon/switch';
     AuthLayout,
     AuthLink,
     Autheader,
+    Card,
     Logo,
-    Button,
+    AuthButton,
     Navbar,
     OrComponent,
     Sidebar,
@@ -77,7 +84,9 @@ import { Switch } from './icon/switch';
     Darktogglebutton,
     Gitbutton,
     ValiderrorComponent,
-    PasswordinputComponent
+    PasswordinputComponent,
+    AppHeader,
+    Linkbutton
   ]
 })
 export class LayoutModule { }

@@ -4,8 +4,7 @@ import { ApiService } from 'src/app/service/api.service';
 @Component({
   selector: 'index',
   templateUrl: './index.html',
-  styles: [
-  ]
+  styles: []
 })
 export class Index {
   constructor(private apiSvc: ApiService) { }

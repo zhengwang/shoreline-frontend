@@ -36,9 +36,9 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationEr
           </FieldCheckbox>
         </div>
         <div>
-          <AppButton type="submit" [disabled]="registerForm.invalid">
+          <AuthButton type="submit" [disabled]="registerForm.invalid">
             {{'register'|i18next}}
-          </AppButton>
+          </AuthButton>
         </div>
       </form>
       <div><Or /></div>

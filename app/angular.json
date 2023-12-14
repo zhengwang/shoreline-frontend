@@ -26,9 +26,13 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/libs/fontawesome/css/all.min.css"
+              "src/assets/libs/fontawesome/css/all.min.css",
+              "src/assets/libs/DataTables/datatables.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/libs/DataTables/jQuery-3.7.0/jquery-3.7.0.min.js",
+              "src/assets/libs/DataTables/datatables.min.js"
+            ]
           },
           "configurations": {
             "production": {

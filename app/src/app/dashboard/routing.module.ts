@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { Payment } from './container/payment';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { Film } from 'src/app/dashboard/container/film';
@@ -12,8 +13,9 @@ const routes: Routes = [
     component: Index,
     canActivate: [DashboardGuard],
     children: [
-      { path: 'film',  component: Film},
-      { path: 'warehouse', component: Warehouse}
+      { path: 'film', component: Film },
+      { path: 'warehouse', component: Warehouse },
+      { path: 'payment', component: Payment }
     ]
   }
 ];

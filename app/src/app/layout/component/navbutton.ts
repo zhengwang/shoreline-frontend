@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'Navbutton',
@@ -19,7 +20,8 @@ import { Component, Input } from '@angular/core';
       <a *ngFor="let item of subItems"
         [routerLink]="item.url"
         role="menuitem"
-        class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-light dark:hover:text-light hover:text-gray-700 capitalize">
+        class="block p-2 text-sm  transition-colors duration-200 rounded-md dark:text-light dark:hover:text-light hover:text-gray-700 capitalize"
+        [ngClass]="activeUrl.indexOf(item.label) >= 0 ? 'text-gray-700':'text-gray-400'">
         {{ item.label | i18next}}
       </a>
     </div>
@@ -27,10 +29,24 @@ import { Component, Input } from '@angular/core';
   styles: [
   ]
 })
-export class Navbutton {
+export class Navbutton implements OnInit {
   @Input() title: string;
   @Input() active: boolean = false;
   @Input() subItems: Array<any>;
+
+  activeUrl: string = '';
+
+  constructor(private route: Router) {}
+
+  ngOnInit(): void {
+    this.route.events.subscribe(event => {
+      // console.log(event);
+      if (event instanceof NavigationEnd) {
+        const { url } = event;
+        this.activeUrl = url;
+      }
+    });
+  }
 
   handleClickMenu($event) {
     $event.preventDefault();

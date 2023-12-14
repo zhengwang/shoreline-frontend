@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
       warehouse works!
     </p>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class Warehouse {
 
