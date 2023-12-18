@@ -1,63 +1,50 @@
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { AuthService } from './service/auth.service';
 import { LayoutModule } from './layout/layout.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { APP_INITIALIZER, LOCALE_ID, NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthinterceptorService } from './service/authinterceptor.service';
-import { I18NEXT_SERVICE, I18NextModule, ITranslationService, defaultInterpolationFormat } from 'angular-i18next';
+import { I18NEXT_SERVICE, I18NextLoadResult, I18NextModule, ITranslationService, defaultInterpolationFormat } from 'angular-i18next';
 
-
-export function appInit(i18next: ITranslationService) {
-  return () => i18next.init({
-    fallbackLng: 'en',
-    supportedLngs: ['en'],
-    debug: true,
-    returnEmptyString: true,
-    resources: {
-      en: {
-        translation: {
-          'account': 'account',
-          'auth': {
-            'login': 'don\'t have an account yet?',
-            'reg': 'already have an account?'
-          },
-          'button': {
-            'reg': 'register',
-            'signin': 'signin',
-            'git_login': 'login with github',
-            'git_reg': 'register using github'
-          },
-          'customize': 'customize',
-          'dash': 'dashboard',
-          'email': 'email address',
-          'film': 'film',
-          'first_name': 'first name',
-          'last_name': 'last name',
-          'login': 'signin',
-          'payment': 'payment',
-          'password': 'Password',
-          'reg_acnt': 'don\'t have an account yet?',
-          'register': 'register',
-          'required': '{{attribute}} is mandatory field.',
-          'remember_me': 'remember me',
-          'signin': 'sign in',
-          'warehouse': 'warehouse',
-          'welcome': 'Welcome to your angular app.',
-        }
-      },
-      de: {
-        translation: {
-          'welcome': 'Willkommen zu Deiner Vue.js App'
-        }
+const i18nextOptions = {
+  debug: true,
+  fallbackLng: 'en',
+  resources: {
+    en: {
+      translation: {
+        'act_log': 'activity log',
+        'forget': 'forget password',
+        'item': {
+          'create': 'create {{item}}'
+        },
+        'login': 'login',
+        'logout': 'logout',
+        'profile': 'profile',
+        'reg': 'create an account',
+        'settings': 'settings',
+        'welcome': 'Welcome Back'
       }
     },
-    interpolation: {
-      format: I18NextModule.interpolationFormat(defaultInterpolationFormat)
+    de: {
+      translation: {
+        'welcome': 'Willkommen zu Deiner Vue.js App'
+      }
     }
-  });
+  },
+  interpolation: {
+    format: I18NextModule.interpolationFormat(defaultInterpolationFormat)
+  }
+};
+
+export function appInit(i18next: ITranslationService) {
+  return () => {
+    let promise: Promise<I18NextLoadResult> = i18next
+      .init(i18nextOptions);
+    return promise;
+  };
 }
 
 export function localeIdFactory(i18next: ITranslationService) {
@@ -75,27 +62,27 @@ export const I18N_PROVIDERS = [
     provide: LOCALE_ID,
     deps: [I18NEXT_SERVICE],
     useFactory: localeIdFactory
-  }
+  },
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
-    AuthModule,
-    LayoutModule,
-    BrowserModule,
     AppRoutingModule,
-    I18NextModule.forRoot(),
+    AuthModule,
+    BrowserModule,
+    DashboardModule,
     HttpClientModule,
-    DashboardModule
+    I18NextModule.forRoot(),
+    LayoutModule,
   ],
   providers: [
     I18N_PROVIDERS,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthinterceptorService,
+      useClass: AuthService,
       multi: true
     }
   ],

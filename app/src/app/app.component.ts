@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CsrfService } from './service/csrf.service';
+import { WebService } from './service/web.service';
 
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>',
-  styleUrls: []
+  styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
+  title = 'app';
 
-  constructor(private csrfSvc: CsrfService) {
-  }
+  constructor(private webSvc: WebService) { }
 
   ngOnInit(): void {
-    this.csrfSvc.fetchCsrf();
+    this.webSvc.fetchCsrf();
   }
 }

@@ -1,44 +1,64 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'Sidebar',
   template: `
-    <aside class="flex-shrink-0 h-full hidden w-64 bg-white border-r dark:border-primary-darker dark:bg-darker md:block">
-      <div class="flex flex-col h-full">
-        <nav aria-label="main" class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
-          <Navbutton [active]="true" [subItems]="menuItems.dashboard" title="dash">
-            <HomeIcon />
-          </Navbutton>
-        </nav>
-        <div class="flex-shrink-0 px-2 py-4 space-y-2">
-          <SidebarFooterButton />
-        </div>
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      <Brand />
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+          Interface
       </div>
-    </aside>
+      <NavItem
+        *ngFor="let item of navitems"
+        [label]="item.label"
+        [subtitle]="item.subtitle"
+        [submenu]="item.submenu"/>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+      <!-- Sidebar Message -->
+      <div class="sidebar-card d-none d-lg-flex">
+          <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+          <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+          <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+      </div>
+
+    </ul>
   `,
-  styles: []
+  styles: ``
 })
 export class Sidebar {
-  currentRoute: string;
-  activeMenu: boolean = false;
-  menuItems: any;
+  navitems: any;
 
-  constructor(private router: Router) {
-    router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        const { url } = event;
-        this.currentRoute = url;
+  constructor() {
+    this.navitems = [
+      {
+        label: 'warehouse',
+        subtitle: 'stock',
+        submenu: [
+          { label: 'film', url: '/dashboard' },
+          { label: 'actor', url: '/dashboard'}
+        ]
       }
-    });
-
-    this.menuItems = {
-      dashboard: [
-        { url: '/dashboard/film', label: 'film' },
-        { url: '/dashboard/warehouse', label: 'warehouse' },
-        { url: '/dashboard/payment', label: 'payment' }
-      ]
-    };
+    ]
   }
-
 }

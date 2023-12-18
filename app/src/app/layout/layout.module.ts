@@ -1,92 +1,71 @@
+import { CogsIcon } from './icon/cogs';
+import { ListIcon } from './icon/list';
+import { UserIcon } from './icon/user';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { I18NextModule } from 'angular-i18next';
-import { AuthButton } from 'src/app/layout/component/auth.button';
-import { FieldCheckbox } from 'src/app/layout/field/FieldCheckbox';
-import { TextfieldComponent } from 'src/app/layout/field/textfield.component';
-import { FloatextfieldComponent } from './field/floatextfield.component';
-import { RouterModule } from '@angular/router';
+import { Brand } from './component/brand';
+import { GoogleIcon } from './icon/google';
+import { LogoutIcon } from './icon/logout';
+import { Topbar } from './container/topbar';
+import { NavItem } from './partial/navitem';
+import { Profile } from './partial/profile';
 import { Sidebar } from './container/sidebar';
-import { SidebarFooter } from './component/sidebarfooter';
-import { Navbutton } from './component/navbutton';
-import { Loading } from './component/loading';
-import { Navbar } from './container/navbar';
-import { AuthLayout } from './container/authlayout';
-import { Logo } from './component/logo';
-import { OrComponent } from './component/or.component';
-import { FormsModule } from '@angular/forms';
-import { Avatar } from './component/avatar';
-import { Notificate } from './component/notificate';
-import { FieldInput } from './field/FieldInput';
-import { ValiderrorComponent } from './form/validerror.component';
-import { PasswordinputComponent } from './field/passwordinput.component';
-import { Gitbutton } from './component/git.button';
-import { Darktogglebutton } from './component/darktoggle.button';
-import { Autheader } from './component/autheader';
-import { AuthLink } from './component/auth.link';
-import { ArrowupIcon } from './icon/arrowup';
-import { Home } from './icon/home';
-import { Switch } from './icon/switch';
-import { AppHeader } from './component/app.header';
-import { Linkbutton } from './component/link.button';
-import { Card } from '../layout/container/card';
+import { Divider } from './component/divider';
+import { CogIcon } from './icon/cog';
+import { CommonModule } from '@angular/common';
+import { Link } from './component/button/link';
+import { RouterModule } from '@angular/router';
+import { I18NextModule } from 'angular-i18next';
+import { Button } from './component/button/button';
+import { DropDownItem } from './component/dropitem';
+import { AuthLayout } from './container/auth.layout';
+import { MainLayout } from './container/main.layout';
+import { FieldInput } from './component/form/input.field';
+import { DropDowndivider } from './component/dropdivider';
+import { Checkbox } from './component/form/checkbox.field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
   declarations: [
-    Avatar,
-    AuthButton,
-    Autheader,
-    Card,
-    FieldInput,
-    OrComponent,
-    Logo,
     AuthLayout,
-    FieldCheckbox,
-    Navbar,
-    Loading,
+    Button,
+    FieldInput,
+    Checkbox,
+    Link,
+    GoogleIcon,
     Sidebar,
-    Navbutton,
-    TextfieldComponent,
-    Notificate,
-    ValiderrorComponent,
-    FloatextfieldComponent,
-    SidebarFooter,
-    PasswordinputComponent,
-    Gitbutton,
-    Darktogglebutton,
-    AuthLink,
-    ArrowupIcon,
-    Home,
-    Switch,
-    AppHeader,
-    Linkbutton,
+    MainLayout,
+    Topbar,
+    Brand,
+    Divider,
+    DropDowndivider,
+    DropDownItem,
+    LogoutIcon,
+    Profile,
+    CogsIcon,
+    ListIcon,
+    UserIcon,
+    NavItem,
+    CogIcon,
   ],
   imports: [
+    FormsModule,
     CommonModule,
-    RouterModule,
     I18NextModule,
-    FormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     AuthLayout,
-    AuthLink,
-    Autheader,
-    Card,
-    Logo,
-    AuthButton,
-    Navbar,
-    OrComponent,
-    Sidebar,
-    FieldCheckbox,
+    Button,
     FieldInput,
-    FloatextfieldComponent,
-    Darktogglebutton,
-    Gitbutton,
-    ValiderrorComponent,
-    PasswordinputComponent,
-    AppHeader,
-    Linkbutton
+    Checkbox,
+    Link,
+    GoogleIcon,
+    Sidebar,
+    MainLayout,
+    Topbar,
   ]
 })
 export class LayoutModule { }

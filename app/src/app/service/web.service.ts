@@ -1,31 +1,31 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebService {
 
-  constructor(
-    private _route: Router,
-    private httpClient: HttpClient) { }
+  constructor(private _route: Router, private client: HttpClient) { }
 
-  login(credential, fn_error) {
-    return this.httpClient.post('/web/login', credential).subscribe({
+  fetchCsrf() {
+    this.client.get('/sanctum/csrf-cookie').subscribe();
+  }
+
+  login(credentials, fn_error) {
+    return this.client.post('/web/login', credentials).subscribe({
       next: (response: any) => {
         const { status, data } = response;
         if (status == 'ok') {
           localStorage.setItem('apiToken', data);
-          this._route.navigate(['/dashboard'])
+          this._route.navigate(['/dashboard']);
         }
       },
       error: error => {
         if (error instanceof HttpErrorResponse) {
           const { status, error: { message } } = error;
-          if (status == 401) {
-            fn_error(message);
-          }
+          fn_error(message);
         }
       }
     });
@@ -33,22 +33,13 @@ export class WebService {
 
   logout() {
     localStorage.removeItem('apiToken');
-    return this.httpClient.get('/web/logout').subscribe({
+    return this.client.get('/web/logout').subscribe({
       next: (response: any) => {
-        console.log(response);
-        const { status } = response;
+        const {status } = response;
         if (status == 'ok') {
-          this._route.navigate(['/auth/signin']);
+          this._route.navigate(['/auth']);
         }
       }
     });
-  }
-
-  checEmailUniq(email) {
-    return this.httpClient.get('/web/uniq-email', {params: { email }});
-  }
-
-  register(payload) {
-    return this.httpClient.post('/web/register', payload);
   }
 }

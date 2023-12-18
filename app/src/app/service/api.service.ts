@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,12 +6,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  constructor(
-    private _route: Router,
-    private client: HttpClient) { }
+  constructor(private client: HttpClient) { }
 
-  fetchData(url: string, params?: any) {
+  fetchData(url: string, params: any | null) {
     return this.client.get(url, { params });
   }
-
 }

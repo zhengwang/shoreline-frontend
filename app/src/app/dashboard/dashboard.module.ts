@@ -1,32 +1,26 @@
-import { Film } from './container/film';
+import { IndexPage } from './page';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Index } from './index.component';
 import { RouterModule } from '@angular/router';
-import { I18NextModule } from 'angular-i18next';
-import { Warehouse } from './container/warehouse';
-import { Index } from 'src/app/dashboard/index/index.page';
-import { LayoutModule } from 'src/app/layout/layout.module';
-import { RoutingModule } from 'src/app/dashboard/routing.module';
-import { FilmComponent } from './table/film.component';
-import { Payment } from './container/payment';
-
+import { CommonModule } from '@angular/common';
+import { RoutingModule } from './routing.module';
+import { LayoutModule } from '../layout/layout.module';
 
 
 
 @NgModule({
   declarations: [
-    Index,
-    Film,
-    Warehouse,
-    FilmComponent,
-    Payment,
+    IndexPage,
+    Index
   ],
   imports: [
     CommonModule,
-    LayoutModule,
     RouterModule,
     RoutingModule,
-    I18NextModule
+    LayoutModule
+  ],
+  exports: [
+    IndexPage
   ]
 })
 export class DashboardModule { }
